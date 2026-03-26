@@ -9,9 +9,15 @@ import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
+
 const inquirySchema = z.object({
   fullName: z.string().min(2, 'Full name is required'),
   email: z.string().email('Valid email is required'),
+  phone: z
+    .string()
+    .min(7, 'Phone number is required')
+    .max(20, 'Phone number is too long')
+    .regex(/^[+\d\s().-]+$/, 'Enter a valid phone number'),
   companyName: z.string().min(1, 'Company name is required'),
   industry: z.string().min(1, 'Please select an industry'),
   projectType: z.string().min(1, 'Please select a project type'),
@@ -91,6 +97,7 @@ export function InquiryForm() {
         {
           from_name: data.fullName,
           from_email: data.email,
+          phone: data.phone,
           company_name: data.companyName,
           industry: data.industry,
           project_type: data.projectType,
@@ -124,7 +131,8 @@ export function InquiryForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="rounded-2xl border border-gray-200 bg-white shadow-xl p-8 md:p-10 space-y-5"
     >
-      <div className="grid md:grid-cols-2 gap-5">
+
+      <div className="grid md:grid-cols-3 gap-5">
         <FormField label="Full Name" error={errors.fullName?.message}>
           <input
             {...register('fullName')}
@@ -139,6 +147,16 @@ export function InquiryForm() {
             type="email"
             placeholder="john@company.com"
             className={cn(inputBase, errors.email && 'border-red-300')}
+          />
+        </FormField>
+
+        <FormField label="Phone Number" error={errors.phone?.message}>
+          <input
+            {...register('phone')}
+            type="tel"
+            placeholder="+44 7123 456789"
+            className={cn(inputBase, errors.phone && 'border-red-300')}
+            autoComplete="tel"
           />
         </FormField>
       </div>
