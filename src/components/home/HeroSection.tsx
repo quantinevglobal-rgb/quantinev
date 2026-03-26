@@ -73,7 +73,7 @@ export function HeroSection() {
             <Button href="/services" size="lg">
               What We Build <ArrowRight className="w-5 h-5" />
             </Button>
-            <Button href="/contact" variant="outline" size="lg">
+            <Button href="#book-meeting" variant="outline" size="lg">
               Book a Call
             </Button>
           </motion.div>

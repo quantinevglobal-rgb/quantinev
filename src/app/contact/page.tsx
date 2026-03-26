@@ -53,7 +53,7 @@ export default function ContactPage() {
                   Schedule a 15-minute introductory call with our team.
                 </p>
                 <a
-                  href="/#meeting"
+                  href="/#book-meeting"
                   className="inline-flex items-center gap-2 text-accent-blue text-sm font-semibold hover:underline"
                 >
                   Book a Meeting →

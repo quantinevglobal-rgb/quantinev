@@ -8,7 +8,7 @@ export function MeetingSection() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com';
 
   return (
-    <section className="section-padding bg-gray-50/50">
+    <section id="book-meeting" className="section-padding bg-gray-50/50">
       <div className="container-max mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
